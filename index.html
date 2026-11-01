@@ -2,29 +2,258 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Satyen Chaudhari</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Satyen Chaudhari — Machine Learning Engineer focused on applied ML, deep learning, and Generative AI.">
+  <meta property="og:title" content="Satyen Chaudhari | Machine Learning Engineer">
+  <meta property="og:description" content="Applied machine learning, deep learning, Generative AI, and software engineering.">
+  <meta property="og:type" content="website">
+  <title>Satyen Chaudhari | Machine Learning Engineer</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --panel: #111a2e;
+      --panel-soft: #0f172a;
+      --text: #edf2ff;
+      --muted: #a6b1c7;
+      --line: rgba(173, 190, 225, .16);
+      --accent: #75a7ff;
+      --accent-2: #7ce3cb;
+      --max: 1120px;
     }
-    h1 { font-size: 2.5rem; }
-    p { font-size: 1.2rem; color: #94a3b8; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(900px 520px at 82% -8%, rgba(84, 130, 255, .16), transparent 60%),
+        radial-gradient(700px 450px at -8% 24%, rgba(63, 202, 177, .10), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(11, 16, 32, .78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.1rem; }
+    .brand span { color: var(--accent-2); }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--text); }
+    .hero { padding: 112px 0 88px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 7px 13px; border: 1px solid var(--line); border-radius: 999px;
+      color: var(--accent-2); background: rgba(124, 227, 203, .06);
+      font-size: .88rem; font-weight: 650;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 14px var(--accent-2); }
+    h1 { max-width: 900px; margin: 25px 0 20px; font-size: clamp(2.65rem, 7vw, 5.35rem); line-height: 1.03; letter-spacing: -.065em; }
+    .gradient { background: linear-gradient(105deg, #8db8ff, #7ce3cb); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { max-width: 760px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.22rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 19px; border-radius: 12px; font-weight: 700; border: 1px solid var(--line); }
+    .button.primary { background: var(--text); color: #0b1020; border-color: transparent; }
+    .button.secondary { background: rgba(255,255,255,.035); color: var(--text); }
+    .section { padding: 70px 0; border-top: 1px solid var(--line); }
+    .section-head { margin-bottom: 30px; }
+    .kicker { color: var(--accent-2); font-size: .78rem; text-transform: uppercase; letter-spacing: .16em; font-weight: 800; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.55rem); letter-spacing: -.045em; line-height: 1.15; margin: 7px 0 0; }
+    .section-intro { max-width: 740px; color: var(--muted); margin: 13px 0 0; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 17px; }
+    .card { grid-column: span 6; padding: 25px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(145deg, rgba(17,26,46,.94), rgba(15,23,42,.82)); }
+    .card.full { grid-column: 1 / -1; }
+    .card h3 { margin: 0 0 9px; font-size: 1.18rem; letter-spacing: -.02em; }
+    .card p { margin: 0; color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+    .tag { display: inline-flex; border: 1px solid var(--line); color: #c8d5ed; background: rgba(255,255,255,.025); border-radius: 999px; padding: 4px 10px; font-size: .78rem; }
+    .card-link { display: inline-flex; margin-top: 17px; color: var(--accent); font-weight: 700; }
+    .two-col { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; }
+    .list { margin: 14px 0 0; padding-left: 19px; color: var(--muted); }
+    .list li { margin: 7px 0; }
+    .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .skill { padding: 19px; border: 1px solid var(--line); border-radius: 15px; background: rgba(17,26,46,.72); }
+    .skill strong { display: block; margin-bottom: 6px; }
+    .skill span { color: var(--muted); font-size: .92rem; }
+    .contact { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 22px; padding: 28px; background: linear-gradient(110deg, rgba(117,167,255,.12), rgba(124,227,203,.07)); border: 1px solid var(--line); border-radius: 18px; }
+    .contact p { margin: 7px 0 0; color: var(--muted); }
+    footer { padding: 28px 0 42px; color: #8290aa; font-size: .88rem; }
+    @media (max-width: 720px) {
+      .nav-inner { min-height: 62px; }
+      .nav-links { gap: 13px; font-size: .82rem; }
+      .nav-links a:nth-child(2), .nav-links a:nth-child(3) { display: none; }
+      .hero { padding: 83px 0 70px; }
+      .card { grid-column: 1 / -1; }
+      .two-col { grid-template-columns: 1fr; }
+      .skill-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 460px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      .skill-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
   </style>
 </head>
 <body>
-  <div>
-    <h1>Hi, I'm Satyen 👋</h1>
-    <p>Welcome to my personal website</p>
-    <p>Data | Tech | Growth</p>
-  </div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">SC<span>.</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#work">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Machine Learning Engineer</div>
+      <h1>Building intelligent systems with <span class="gradient">data, models & software.</span></h1>
+      <p class="lead">
+        I'm Satyen Chaudhari. I work across applied machine learning, deep-learning fundamentals,
+        and Generative AI, bringing an enterprise software engineering mindset to practical AI projects.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#work">Explore selected work</a>
+        <a class="button secondary" href="https://github.com/Saty290501" target="_blank" rel="noreferrer">GitHub profile ↗</a>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">About</div>
+          <h2>Strong engineering. Curious about how models learn.</h2>
+          <p class="section-intro">
+            My background includes around three years supporting enterprise banking technology.
+            I worked with production workflows, SQL, application diagnostics, batch processing,
+            scripts, and service integrations. I now apply that problem-solving discipline to
+            machine learning and GenAI: understand the fundamentals, build carefully, test, and explain the result.
+          </p>
+        </div>
+        <div class="two-col">
+          <article class="card">
+            <h3>What I am working toward</h3>
+            <p>Reliable ML applications built from sound fundamentals, measurable experiments, and maintainable software.</p>
+            <div class="tag-row">
+              <span class="tag">Applied ML</span><span class="tag">Deep Learning</span>
+              <span class="tag">Generative AI</span><span class="tag">LLM Applications</span>
+              <span class="tag">Retrieval Systems</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Education</h3>
+            <p><strong>B.Tech — Electronics & Telecommunication Engineering</strong><br>
+              Vishwakarma Institute of Technology, Pune · 2019–2023<br>CGPA: 8.39</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Selected work</div>
+          <h2>Projects that show how I learn and build.</h2>
+          <p class="section-intro">A mix of first-principles implementation, retrieval-based AI, and applied deep-learning work.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>NN2LLM — Neural Networks to Large Language Models</h3>
+            <p>A first-principles learning repository. The current code implements scalar Value objects, arithmetic operations, computational-graph tracing, and graph inspection. Automatic differentiation is a planned next milestone.</p>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">Computational Graphs</span><span class="tag">Deep Learning</span></div>
+            <a class="card-link" href="https://github.com/Saty290501/NN2LLM" target="_blank" rel="noreferrer">View repository ↗</a>
+          </article>
+          <article class="card">
+            <h3>Hybrid Retrieval RAG Assistant</h3>
+            <p>A local question-answering application combining dense retrieval, BM25 keyword search, Reciprocal Rank Fusion, result diversification, and a locally hosted language model.</p>
+            <div class="tag-row"><span class="tag">LangChain</span><span class="tag">FAISS</span><span class="tag">BM25</span><span class="tag">Ollama</span><span class="tag">Streamlit</span></div>
+            <p class="card-link">Local project · public repository documentation in progress</p>
+          </article>
+          <article class="card">
+            <h3>Brain Tumor Detection & Classification</h3>
+            <p>An academic image-classification project using a VGG16-based convolutional neural network, covering image preparation and deep-learning model training.</p>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">CNN</span><span class="tag">VGG16</span></div>
+          </article>
+          <article class="card">
+            <h3>Portfolio Website</h3>
+            <p>A responsive personal portfolio built to present my engineering background, technical focus, and project work.</p>
+            <div class="tag-row"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span></div>
+            <a class="card-link" href="https://github.com/Saty290501/Portfolio" target="_blank" rel="noreferrer">View source ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Technical toolkit</div>
+          <h2>Tools I use and continue to develop.</h2>
+        </div>
+        <div class="skill-grid">
+          <div class="skill"><strong>Programming</strong><span>Python, Java, C++, SQL</span></div>
+          <div class="skill"><strong>ML & Data</strong><span>NumPy, Pandas, scikit-learn, TensorFlow, Keras, PyTorch</span></div>
+          <div class="skill"><strong>GenAI & Retrieval</strong><span>LLMs, RAG, LangChain, LangGraph, FAISS, BM25, Ollama, MCP</span></div>
+          <div class="skill"><strong>Backend</strong><span>FastAPI, Spring Boot, Hibernate, REST APIs, Microservices</span></div>
+          <div class="skill"><strong>Cloud & Tools</strong><span>AWS, OCI, Docker, Git, Linux/Unix</span></div>
+          <div class="skill"><strong>Databases</strong><span>MySQL, PostgreSQL, MongoDB</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Experience</div>
+          <h2>Enterprise systems and production problem-solving.</h2>
+        </div>
+        <article class="card full">
+          <h3>Oracle Financial Services — Technical Analyst, Oracle Banking Support</h3>
+          <p>Approximately three years of experience supporting enterprise banking applications across implementation and production-support workflows.</p>
+          <ul class="list">
+            <li>Investigated End-of-Day and batch-processing issues using SQL, logs, spools, debug traces, and Unix/Linux scripts.</li>
+            <li>Troubleshot transaction, accounting, account-balance, and service-integration scenarios.</li>
+            <li>Coordinated with site teams and product engineering groups to isolate and resolve production issues.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <div class="kicker">Contact</div>
+            <h2>Let's connect and build something useful.</h2>
+            <p>Open to Machine Learning Engineer and AI Engineer opportunities, technical discussions, and collaborations.</p>
+          </div>
+          <a class="button primary" href="https://github.com/Saty290501" target="_blank" rel="noreferrer">Connect on GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year">2026</span> Satyen Chaudhari · Built with HTML and CSS.</div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
 </body>
 </html>
